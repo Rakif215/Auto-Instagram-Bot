@@ -36,8 +36,8 @@ for d in (VIDEOS_DIR, OUTPUT_DIR, LOGS_DIR, DATA_DIR, MUSIC_DIR):
     os.makedirs(d, exist_ok=True)
 
 # ─── Video ───────────────────────────────────────────────────────────────────
-FFMPEG_PATH = os.getenv("FFMPEG_PATH", "/opt/homebrew/bin/ffmpeg")
-FFPROBE_PATH = os.getenv("FFPROBE_PATH", "/opt/homebrew/bin/ffprobe")
+FFMPEG_PATH = os.getenv("FFMPEG_PATH", "ffmpeg")
+FFPROBE_PATH = os.getenv("FFPROBE_PATH", "ffprobe")
 VIDEO_WIDTH = 1080
 VIDEO_HEIGHT = 1920
 VIDEO_MIN_DURATION = 8   # seconds
