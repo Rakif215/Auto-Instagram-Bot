@@ -159,13 +159,19 @@ def _cleanup_old_files(days_old: int = 3):
 if __name__ == "__main__":
     dry_run = "--dry-run" in sys.argv
     start_scheduler = "--schedule" in sys.argv
+    
+    # Check for --mode argument (e.g. --mode youtube or --mode rss)
+    news_mode = "auto"
+    for i, arg in enumerate(sys.argv):
+        if arg == "--mode" and i + 1 < len(sys.argv):
+            news_mode = sys.argv[i+1]
 
     if start_scheduler:
         from scheduler import start
-        start(dry_run=dry_run)
+        start(dry_run=dry_run, news_mode=news_mode)
     else:
         try:
-            run_pipeline(dry_run=dry_run)
+            run_pipeline(dry_run=dry_run, news_mode=news_mode)
         except Exception as e:
             logger.error(f"Pipeline failed: {e}", exc_info=True)
             sys.exit(1)
