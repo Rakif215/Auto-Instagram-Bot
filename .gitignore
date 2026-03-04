@@ -1,0 +1,28 @@
+# Environments
+.env
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Logs
+logs/
+*.log
+
+# Data and Media
+data/
+output/
+music/
+videos/
+*.mp4
+*.MP4
+*.mp3
+*.m4a
+*.png
+*.jpg
+*.jpeg
+*.gif
+
+# OS Files
+.DS_Store
