@@ -29,13 +29,17 @@ CLEAN_FONTS = [
     "/System/Library/Fonts/HelveticaNeue.ttc",
     "/System/Library/Fonts/Helvetica.ttc",
     "/Library/Fonts/Arial.ttf",
+    "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+    "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf"
 ]
 # Serif fonts for headline
 SERIF_FONTS = [
     "/Library/Fonts/Georgia.ttf",
     "/Library/Fonts/Times New Roman.ttf",
     "/System/Library/Fonts/Times.ttc",
-    "/System/Library/Fonts/Charter.ttc"
+    "/System/Library/Fonts/Charter.ttc",
+    "/usr/share/fonts/truetype/dejavu/DejaVuSerif-Bold.ttf",
+    "/usr/share/fonts/truetype/liberation/LiberationSerif-Bold.ttf"
 ]
 
 def _get_font(size: int, serif: bool = False) -> ImageFont.FreeTypeFont:
