@@ -25,21 +25,25 @@ logger = logging.getLogger(__name__)
 
 # ─── Font resolution ──────────────────────────────────────────────────────────
 # Clean fonts for small text
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 CLEAN_FONTS = [
+    os.path.join(BASE_DIR, "fonts", "Helvetica.ttc"),
+    os.path.join(BASE_DIR, "fonts", "Arial.ttf"),
+    os.path.join(BASE_DIR, "fonts", "Arial Bold.ttf"),
     "/System/Library/Fonts/HelveticaNeue.ttc",
     "/System/Library/Fonts/Helvetica.ttc",
     "/Library/Fonts/Arial.ttf",
-    "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
-    "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf"
 ]
 # Serif fonts for headline
 SERIF_FONTS = [
+    os.path.join(BASE_DIR, "fonts", "Georgia.ttf"),
+    os.path.join(BASE_DIR, "fonts", "Georgia Bold.ttf"),
+    os.path.join(BASE_DIR, "fonts", "Times New Roman.ttf"),
+    os.path.join(BASE_DIR, "fonts", "Times.ttc"),
     "/Library/Fonts/Georgia.ttf",
     "/Library/Fonts/Times New Roman.ttf",
     "/System/Library/Fonts/Times.ttc",
     "/System/Library/Fonts/Charter.ttc",
-    "/usr/share/fonts/truetype/dejavu/DejaVuSerif-Bold.ttf",
-    "/usr/share/fonts/truetype/liberation/LiberationSerif-Bold.ttf"
 ]
 
 def _get_font(size: int, serif: bool = False) -> ImageFont.FreeTypeFont:

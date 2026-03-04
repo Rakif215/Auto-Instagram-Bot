@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  # 1. The 24/7 background scheduler bot
+  hubx-bot:
+    build: .
+    container_name: hubx_bot
+    restart: unless-stopped
+    command: python main.py --schedule
+    env_file:
+      - .env
+    volumes:
+      - ./data:/app/data
+      - ./output:/app/output
+      - ./logs:/app/logs
+      - ./music:/app/music
+      - ./videos:/app/videos
+
+  # 2. The public Streamlit dashboard
+  hubx-dashboard:
+    build: .
+    container_name: hubx_dashboard
+    restart: unless-stopped
+    command: streamlit run dashboard.py --server.port 8501
+    env_file:
+      - .env
+    ports:
+      - "8501:8501"
+    volumes:
+      # Data needs to be shared so the dashboard can see generated reels and DBs
+      - ./data:/app/data
+      - ./output:/app/output
+      - ./logs:/app/logs
+      - ./music:/app/music
+      - ./videos:/app/videos
