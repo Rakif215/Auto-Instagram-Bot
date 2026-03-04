@@ -92,7 +92,7 @@ def _publish_graph_api(video_path: str, caption: str) -> str:
         f"{BASE}/{IG_USER_ID}/media_publish",
         params={"access_token": IG_ACCESS_TOKEN},
         data={"creation_id": container_id},
-        timeout=15,
+        timeout=60,
     )
     pub_r.raise_for_status()
     post_id = pub_r.json().get("id", "unknown")
