@@ -50,8 +50,14 @@ def run_pipeline(dry_run: bool = False, use_music: bool = None, use_dynamic: boo
         use_dynamic = USE_DYNAMIC_BACKGROUND
         
     if os.path.exists(LOCK_FILE):
-        logger.warning("Pipeline is already running (lock file exists). Skipping this run.")
-        return False, None
+        import time
+        # If lockfile is older than 30 minutes, assume the previous run crashed and clean it up
+        if time.time() - os.path.getmtime(LOCK_FILE) > 1800:
+            logger.warning("Found a stale lock file (older than 30 mins). Automatically removing it and proceeding.")
+            os.remove(LOCK_FILE)
+        else:
+            logger.warning("Pipeline is already running (lock file exists). Skipping this run.")
+            return False, None
     
     # Create lock file
     with open(LOCK_FILE, "w") as f:

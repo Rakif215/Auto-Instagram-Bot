@@ -30,6 +30,8 @@ def download_youtube_clip(video_url: str) -> str:
         'noplaylist': True,
         'quiet': True,
         'no_warnings': True,
+        # Bypass YouTube Bot Defense / Sign-in requirements on cloud IPs
+        'extractor_args': {'youtube': {'player_client': ['android', 'web']}}
     }
 
     try:
